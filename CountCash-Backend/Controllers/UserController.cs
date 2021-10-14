@@ -61,5 +61,7 @@ namespace CountCash_Backend.Controllers
             }
             return new JsonResult("Crear Usuario funciona.");
         }
+
+
     }
 }
