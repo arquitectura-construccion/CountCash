@@ -83,5 +83,26 @@ namespace CountCash_Backend.Controllers
             }
             return new JsonResult("Usuario Eliminado.");
         }
+        [Route("UpdateUsuario")]
+        [HttpPut]
+        public JsonResult Put(User usuario)
+        {
+            string query = @"EXEC UpdateUsuario " + usuario.ID_Usuario + @", '" + usuario.Nombre + @"', '" + usuario.Email + @"', '" + usuario.Contraseña + @"'";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBconn");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Usuario Updeitiado.");
+        }
     }
 }
