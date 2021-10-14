@@ -59,7 +59,7 @@ namespace CountCash_Backend.Controllers
                     myCon.Close();
                 }
             }
-            return new JsonResult("FUNCIONA MMG s");
+            return new JsonResult("Crear Usuario funciona.");
         }
     }
 }
