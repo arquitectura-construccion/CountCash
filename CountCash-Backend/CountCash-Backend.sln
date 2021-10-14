@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountCash-Backend", "CountCash-Backend.csproj", "{02C9E963-AB85-43E8-9ACC-E1F53DF843C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02C9E963-AB85-43E8-9ACC-E1F53DF843C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C9E963-AB85-43E8-9ACC-E1F53DF843C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C9E963-AB85-43E8-9ACC-E1F53DF843C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C9E963-AB85-43E8-9ACC-E1F53DF843C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1BC6DE8D-97F7-478F-9F97-F01050662662}
+	EndGlobalSection
+EndGlobal
