@@ -66,7 +66,7 @@ namespace CountCash_Backend.Controllers
                     myCon.Close();
                 }
             }
-            return new JsonResult("Crear Usuario funciona.");
+            return new JsonResult("Crear Flujo funciona.");
         }
 
         [Route("DeleteFlujoUsuario")]
@@ -88,9 +88,31 @@ namespace CountCash_Backend.Controllers
                     myCon.Close();
                 }
             }
-            return new JsonResult("Usuario Eliminado.");
+            return new JsonResult("Flujo eliminado.");
         }
 
+
+        [Route("UpdateFlujoUsuario")]
+        [HttpPut]
+        public JsonResult Put(FlujoUsuarioModel FlujoUsuario)
+        {
+            string query = @"EXEC UpdateFlujo "+FlujoUsuario.UsuarioID+@", "+FlujoUsuario.Monto+@", '"+FlujoUsuario.Descripcion+@"', "+FlujoUsuario.TipoFlujoID+@", "+FlujoUsuario.TipoMontoID+@"";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBconn");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Flujo updated..");
+        }
    
 
 
