@@ -21,9 +21,9 @@ namespace CountCash_Backend.Controllers
             _configuration = configuration;
         }
         [HttpGet]
-        public JsonResult Get()
+        public JsonResult Get(User usuario)
         {
-            string query = @"EXEC SeleccionarUsuario_login 'javier', 'popo'";
+            string query = @"EXEC SeleccionarUsuario_login '" + usuario.Nombre + @"', '" + usuario.Contraseña + @"'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBconn");
             SqlDataReader myReader;
