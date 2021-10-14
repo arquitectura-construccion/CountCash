@@ -20,6 +20,7 @@ namespace CountCash_Backend.Controllers
         {
             _configuration = configuration;
         }
+        [Route("GetUsuario")]
         [HttpGet]
         public JsonResult Get(User usuario)
         {
@@ -40,7 +41,7 @@ namespace CountCash_Backend.Controllers
             }
             return new JsonResult(table);
         }
-
+        [Route("PostUsuario")]
         [HttpPost]
         public JsonResult Post(User usuario)
         {
@@ -61,7 +62,26 @@ namespace CountCash_Backend.Controllers
             }
             return new JsonResult("Crear Usuario funciona.");
         }
-
-
+        [Route("DeleteUsuario")]
+        [HttpDelete]
+        public JsonResult Delete(User usuario)
+        {
+            string query = @"EXEC EliminarUsuario " + usuario.ID_Usuario + @"";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBconn");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Usuario Eliminado.");
+        }
     }
 }
