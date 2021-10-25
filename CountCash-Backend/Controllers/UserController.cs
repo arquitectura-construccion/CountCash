@@ -22,7 +22,7 @@ namespace CountCash_Backend.Controllers
         }
         [Route("GetUsuario")]
         [HttpGet]
-        public JsonResult Get(User usuario)
+        public JsonResult Get([FromQuery] User usuario)
         {
             string query = @"EXEC SeleccionarUsuario_login '" + usuario.Nombre + @"', '" + usuario.Contraseña + @"'";
             DataTable table = new DataTable();

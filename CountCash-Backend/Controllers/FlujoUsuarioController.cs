@@ -24,7 +24,7 @@ namespace CountCash_Backend.Controllers
 
         [Route("GetFlujoUsuario")]
         [HttpGet]
-        public JsonResult Get(FlujoUsuarioModel FlujoUsuario)
+        public JsonResult Get([FromQuery] FlujoUsuarioModel FlujoUsuario)
         {
 
 
@@ -71,9 +71,9 @@ namespace CountCash_Backend.Controllers
 
         [Route("DeleteFlujoUsuario")]
         [HttpDelete]
-        public JsonResult Delete(FlujoUsuarioModel FlujoUsuario)
+        public JsonResult Delete([FromQuery] FlujoUsuarioModel FlujoUsuario)
         {
-            string query = @"EXEC EliminarFlujoUsuario "+FlujoUsuario.UsuarioID+@", " + FlujoUsuario.FlujoUsuarioID + @"";
+            string query = @"EXEC EliminarFlujoUsuario " + FlujoUsuario.FlujoUsuarioID + @"";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBconn");
             SqlDataReader myReader;
@@ -96,7 +96,7 @@ namespace CountCash_Backend.Controllers
         [HttpPut]
         public JsonResult Put(FlujoUsuarioModel FlujoUsuario)
         {
-            string query = @"EXEC UpdateFlujo "+FlujoUsuario.UsuarioID+@", "+FlujoUsuario.Monto+@", '"+FlujoUsuario.Descripcion+@"', "+FlujoUsuario.TipoFlujoID+@", "+FlujoUsuario.TipoMontoID+@"";
+            string query = @"EXEC UpdateFlujo "+FlujoUsuario.FlujoUsuarioID+@", "+FlujoUsuario.Monto+@", '"+FlujoUsuario.Descripcion+@"', "+FlujoUsuario.TipoFlujoID+@", "+FlujoUsuario.TipoMontoID+@"";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBconn");
             SqlDataReader myReader;
